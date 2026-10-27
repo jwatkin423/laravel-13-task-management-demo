@@ -1,0 +1,30 @@
+.git
+.github
+.idea
+.vscode
+.DS_Store
+
+node_modules
+vendor
+
+.env
+.env.*
+!.env.example
+
+storage/app/*
+!storage/app/public
+!storage/app/.gitignore
+storage/framework/cache/*
+storage/framework/sessions/*
+storage/framework/testing/*
+storage/framework/views/*
+storage/logs/*
+
+tests
+phpunit.xml
+*.md
+
+# Locally generated caches tied to the dev environment's installed packages
+# (e.g. laravel/boost, only present with require-dev) — Laravel rebuilds
+# these automatically against whatever is actually installed in the image.
+bootstrap/cache/*.php
