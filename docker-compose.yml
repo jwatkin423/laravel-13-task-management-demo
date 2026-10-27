@@ -1,8 +1,11 @@
 # Production deployment for Dockploy.
 #
-# Dockploy injects the environment variables you set in its dashboard into
-# this stack, so a real .env file is not required (and is excluded from the
-# image via .dockerignore). See README.md for the required variable list.
+# The database is a separate Dokploy-managed Database resource (MySQL),
+# not part of this compose file — create/deploy it in the Dokploy UI and
+# point DB_HOST/DB_PORT/DB_DATABASE/DB_USERNAME/DB_PASSWORD at it via the
+# app's environment variables. Dokploy injects those into the container,
+# so a real .env file is not required (and is excluded from the image via
+# .dockerignore). See README.md for the required variable list.
 #
 # Dockploy manages routing/SSL for whichever service you point a domain at
 # in its UI (no Traefik labels needed here) — point it at the `app` service
@@ -24,8 +27,8 @@ services:
             LOG_CHANNEL: ${LOG_CHANNEL:-stack}
             LOG_LEVEL: ${LOG_LEVEL:-error}
             DB_CONNECTION: mysql
-            DB_HOST: mysql
-            DB_PORT: 3306
+            DB_HOST: ${DB_HOST}
+            DB_PORT: ${DB_PORT:-3306}
             DB_DATABASE: ${DB_DATABASE}
             DB_USERNAME: ${DB_USERNAME}
             DB_PASSWORD: ${DB_PASSWORD}
@@ -36,40 +39,7 @@ services:
             RUN_MIGRATIONS: ${RUN_MIGRATIONS:-true}
         volumes:
             - app-storage:/var/www/html/storage/app
-        depends_on:
-            mysql:
-                condition: service_healthy
-        networks:
-            - app
-
-    mysql:
-        image: 'mysql:8.4'
-        restart: unless-stopped
-        environment:
-            MYSQL_DATABASE: ${DB_DATABASE}
-            MYSQL_USER: ${DB_USERNAME}
-            MYSQL_PASSWORD: ${DB_PASSWORD}
-            MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
-        volumes:
-            - mysql-data:/var/lib/mysql
-        healthcheck:
-            test:
-                - CMD
-                - mysqladmin
-                - ping
-                - '-p${DB_PASSWORD}'
-            interval: 10s
-            timeout: 5s
-            retries: 10
-        networks:
-            - app
-
-networks:
-    app:
-        driver: bridge
 
 volumes:
-    mysql-data:
-        driver: local
     app-storage:
         driver: local

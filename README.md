@@ -46,29 +46,32 @@ $ ./vendor/bin/sail node -v  -> v24.22.1
 
 The steps above (Sail) are for local development only. For production, the app ships with a
 standalone `Dockerfile` (nginx + php-fpm under supervisord, no Sail dependency) and a
-`docker-compose.yml` meant to be deployed as a **Docker Compose** app in Dockploy.
+`docker-compose.yml` meant to be deployed as a **Docker Compose** app in Dockploy. The database
+is a separate **Dokploy-managed Database** resource (MySQL), not part of this compose file.
 
-1. Push this repository to a Git remote Dockploy can reach.
-2. In Dockploy, create a new **Compose** application pointing at this repo/branch, with
+1. In Dokploy, create and deploy a MySQL **Database** resource in the same project (Dokploy
+   databases have their own "Deploy" step — creating the resource doesn't start it). Note the
+   internal host it's assigned (shown in the database's Connection tab) and the
+   database/username/password you set for it.
+2. Push this repository to a Git remote Dockploy can reach.
+3. In Dockploy, create a new **Compose** application pointing at this repo/branch, with
    `docker-compose.yml` as the compose file.
-3. Set these environment variables in the Dockploy dashboard (do **not** commit a `.env` with
-   real secrets — the image deliberately excludes it):
+4. Set these environment variables on the `app` service in the Dockploy dashboard (do **not**
+   commit a `.env` with real secrets — the image deliberately excludes it):
 
    | Variable | Notes |
    |---|---|
    | `APP_KEY` | Generate locally with `php artisan key:generate --show` and paste the value |
    | `APP_URL` | Public URL Dockploy will serve the app on, e.g. `https://tasks.example.com` |
    | `APP_DEBUG` | `false` in production |
-   | `DB_DATABASE` / `DB_USERNAME` / `DB_PASSWORD` | Credentials for the app's MySQL user |
-   | `DB_ROOT_PASSWORD` | Root password for the bundled MySQL container |
+   | `DB_HOST` | The internal host of the Database resource from step 1 |
+   | `DB_PORT` | Usually `3306` |
+   | `DB_DATABASE` / `DB_USERNAME` / `DB_PASSWORD` | Must match the credentials set on the Database resource |
    | `RUN_MIGRATIONS` | `true` to run `php artisan migrate --force` on container start (default `true`) |
 
-4. In Dockploy's **Domains** tab, point your domain at the `app` service on container port `80`.
+5. In Dockploy's **Domains** tab, point your domain at the `app` service on container port `80`.
    Dockploy manages the reverse proxy and SSL certificate for you — no Traefik labels needed in
    the compose file.
-5. Deploy. The `app` container builds the frontend assets and PHP dependencies in multi-stage
+6. Deploy. The `app` container builds the frontend assets and PHP dependencies in multi-stage
    Docker builds, waits for MySQL to be reachable, caches config/routes/views, optionally runs
    migrations, and starts nginx + php-fpm.
-6. If you'd rather use a database Dockploy manages separately instead of the bundled `mysql`
-   service, remove the `mysql` service from `docker-compose.yml` and point `DB_HOST`/`DB_PORT` at
-   that database instead.
