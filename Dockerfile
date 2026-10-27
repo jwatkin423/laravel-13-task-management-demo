@@ -90,5 +90,13 @@ RUN mkdir -p storage/framework/cache/data \
 
 EXPOSE 80
 
+echo "Waiting for MySQL to boot..."
+until nc -z -v -w30 $DB_HOST $DB_PORT; do
+  echo "MySQL is not ready yet. Retrying in 2 seconds..."
+  sleep 2
+done
+echo "MySQL is up! Running migrations..."
+php artisan migrate --force
+
 ENTRYPOINT ["entrypoint.sh"]
 CMD ["supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
