@@ -1,14 +1,7 @@
 <script setup>
 import axios from "axios";
-import { ref } from 'vue';
 import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue';
 import { ExclamationTriangleIcon } from '@heroicons/vue/24/outline';
-import {onClickOutside} from '@vueuse/core';
-
-// targets the modal
-const target = ref(null);
-// clicking outside the modal will close the modal
-onClickOutside(target, ()=>emit('modal-close'));
 
 const props = defineProps({
     task: Object,
@@ -30,9 +23,8 @@ const closeModal = (id) => {
 
 <template>
     <div>
-        <button class="rounded-md bg-white/10 px-2.5 py-1.5 text-sm font-semibold text-white inset-ring inset-ring-white/5 hover:bg-white/20" @click="isOpen = true">Open dialog</button>
         <TransitionRoot as="template" :show="isOpen">
-            <Dialog class="relative z-10" @close="isOpen = false">
+            <Dialog class="relative z-10" @close="closeModal(false)">
                 <TransitionChild as="template" enter="ease-out duration-300" enter-from="opacity-0" enter-to="" leave="ease-in duration-200" leave-from="" leave-to="opacity-0">
                     <div class="fixed inset-0 bg-gray-900/50 transition-opacity"></div>
                 </TransitionChild>
