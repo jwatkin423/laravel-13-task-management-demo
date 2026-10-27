@@ -2,6 +2,7 @@
 import {Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems} from '@headlessui/vue'
 import {Bars3Icon, XMarkIcon} from '@heroicons/vue/24/outline'
 import {Link} from "@inertiajs/vue3";
+import logo from "../../../images/tm-demo-logo/demo-call-tasks-icon.svg";
 
 const activeLink = 'inline-flex items-center border-b-2 border-indigo-500 px-1 pt-1 text-sm font-medium text-white';
 
@@ -29,8 +30,8 @@ const inactiveLink = 'inline-flex items-center border-b-2 border-transparent px-
                 <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                     <div class="flex shrink-0 items-center">
                         <img class="h-8 w-auto"
-                             src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500"
-                             alt="Your Company"/>
+                             :src="logo"
+                             alt="Task Manager"/>
                     </div>
                     <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
                         <Link href="/"
