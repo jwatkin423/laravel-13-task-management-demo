@@ -1,0 +1,1 @@
+import{D as e,f as t,m as n,u as r,w as i}from"./app-BJgSB4SH.js";import{n as a}from"./Navbar-KO0qVftr.js";var o={class:`min-h-screen`},s={class:`max-w-7xl mx-auto py-8 px-4`},c={__name:`AppLayout`,setup(c){return(c,l)=>(i(),t(`div`,o,[n(a),r(`main`,s,[e(c.$slots,`default`)])]))}};export{c as default};

@@ -1,0 +1,147 @@
+{
+  "_ChevronDownIcon-CEriYhdv.js": {
+    "file": "assets/ChevronDownIcon-CEriYhdv.js",
+    "name": "ChevronDownIcon",
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "_Navbar-KO0qVftr.js": {
+    "file": "assets/Navbar-KO0qVftr.js",
+    "name": "Navbar",
+    "imports": [
+      "_dist-BhPz6bRE.js",
+      "resources/js/app.js"
+    ]
+  },
+  "_PencilIcon-CefeCit8.js": {
+    "file": "assets/PencilIcon-CefeCit8.js",
+    "name": "PencilIcon",
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "_dist-BKb5tX_4.css": {
+    "file": "assets/dist-BKb5tX_4.css",
+    "src": "_dist-BKb5tX_4.css"
+  },
+  "_dist-BhPz6bRE.js": {
+    "file": "assets/dist-BhPz6bRE.js",
+    "name": "dist",
+    "imports": [
+      "resources/js/app.js"
+    ],
+    "css": [
+      "assets/dist-BKb5tX_4.css"
+    ]
+  },
+  "_fonts-C9MNnjVw.css": {
+    "file": "assets/fonts-C9MNnjVw.css",
+    "src": "_fonts-C9MNnjVw.css"
+  },
+  "_instrument-sans-400-normal-D1W7dsQl.woff": {
+    "file": "assets/instrument-sans-400-normal-D1W7dsQl.woff",
+    "src": "_instrument-sans-400-normal-D1W7dsQl.woff"
+  },
+  "_instrument-sans-400-normal-DRC__1Mx.woff2": {
+    "file": "assets/instrument-sans-400-normal-DRC__1Mx.woff2",
+    "src": "_instrument-sans-400-normal-DRC__1Mx.woff2"
+  },
+  "_instrument-sans-500-normal-Dk9ku72i.woff2": {
+    "file": "assets/instrument-sans-500-normal-Dk9ku72i.woff2",
+    "src": "_instrument-sans-500-normal-Dk9ku72i.woff2"
+  },
+  "_instrument-sans-500-normal-Z6ESRlEs.woff": {
+    "file": "assets/instrument-sans-500-normal-Z6ESRlEs.woff",
+    "src": "_instrument-sans-500-normal-Z6ESRlEs.woff"
+  },
+  "_instrument-sans-600-normal-B7fBEWYG.woff2": {
+    "file": "assets/instrument-sans-600-normal-B7fBEWYG.woff2",
+    "src": "_instrument-sans-600-normal-B7fBEWYG.woff2"
+  },
+  "_instrument-sans-600-normal-B9e8oLYv.woff": {
+    "file": "assets/instrument-sans-600-normal-B9e8oLYv.woff",
+    "src": "_instrument-sans-600-normal-B9e8oLYv.woff"
+  },
+  "resources/css/app.css": {
+    "file": "assets/app-DP-80JAO.css",
+    "name": "app",
+    "names": [
+      "app.css"
+    ],
+    "src": "resources/css/app.css",
+    "isEntry": true
+  },
+  "resources/js/Pages/Layouts/AppLayout.vue": {
+    "file": "assets/AppLayout-BV5lYWeX.js",
+    "name": "AppLayout",
+    "src": "resources/js/Pages/Layouts/AppLayout.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "_Navbar-KO0qVftr.js"
+    ]
+  },
+  "resources/js/Pages/Projects/Index.vue": {
+    "file": "assets/Index-C9ut2aon.js",
+    "name": "Index",
+    "src": "resources/js/Pages/Projects/Index.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "resources/js/Pages/Layouts/AppLayout.vue",
+      "_PencilIcon-CefeCit8.js"
+    ]
+  },
+  "resources/js/Pages/Projects/View.vue": {
+    "file": "assets/View-C3DkdUBE.js",
+    "name": "View",
+    "src": "resources/js/Pages/Projects/View.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "_dist-BhPz6bRE.js",
+      "resources/js/app.js",
+      "resources/js/Pages/Layouts/AppLayout.vue"
+    ]
+  },
+  "resources/js/Pages/Tasks/Index.vue": {
+    "file": "assets/Index-DyMY5jsy.js",
+    "name": "Index",
+    "src": "resources/js/Pages/Tasks/Index.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "_dist-BhPz6bRE.js",
+      "resources/js/app.js",
+      "_Navbar-KO0qVftr.js",
+      "resources/js/Pages/Layouts/AppLayout.vue",
+      "_PencilIcon-CefeCit8.js",
+      "_ChevronDownIcon-CEriYhdv.js"
+    ]
+  },
+  "resources/js/Pages/Tasks/View.vue": {
+    "file": "assets/View-B09sLhoH.js",
+    "name": "View",
+    "src": "resources/js/Pages/Tasks/View.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "_dist-BhPz6bRE.js",
+      "resources/js/app.js",
+      "resources/js/Pages/Layouts/AppLayout.vue",
+      "_ChevronDownIcon-CEriYhdv.js"
+    ]
+  },
+  "resources/js/app.js": {
+    "file": "assets/app-BJgSB4SH.js",
+    "name": "app",
+    "src": "resources/js/app.js",
+    "isEntry": true,
+    "dynamicImports": [
+      "resources/js/Pages/Layouts/AppLayout.vue",
+      "_Navbar-KO0qVftr.js",
+      "resources/js/Pages/Projects/Index.vue",
+      "resources/js/Pages/Projects/View.vue",
+      "resources/js/Pages/Tasks/Index.vue",
+      "resources/js/Pages/Tasks/View.vue"
+    ]
+  }
+}
