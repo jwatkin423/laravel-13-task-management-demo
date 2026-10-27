@@ -2,13 +2,13 @@
 
 namespace Database\Factories;
 
-use App\Models\task;
+use App\Models\Task;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends Factory<task>
+ * @extends Factory<Task>
  */
-class taskFactory extends Factory
+class TaskFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -24,7 +24,7 @@ class taskFactory extends Factory
 
     public function configure()
     {
-        return $this->afterCreating(function (task $task) {
+        return $this->afterCreating(function (Task $task) {
             $task->update(['priority' => $task->task_id]);
         });
     }

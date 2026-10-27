@@ -2,13 +2,13 @@
 
 namespace Database\Factories;
 
-use App\Models\project;
+use App\Models\Project;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends Factory<project>
+ * @extends Factory<Project>
  */
-class projectFactory extends Factory
+class ProjectFactory extends Factory
 {
     /**
      * Define the model's default state.
